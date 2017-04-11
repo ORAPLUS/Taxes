@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta charset="utf-8" />
+<title>Taxes</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container">
+	
+		<div class="panel panel-default">
+			<div class="panel-heading">Liste des taxes</div>
+			<div class="panel-body">
+				<div class="container">
+					<form th:action="@{/taxes}" method="GET" id="myForm">
+						<label>Mot Clé: </label> 
+						<select name="code" onchange="document.getElementById('myForm').submit()">
+						<option th:each="e:${entreprises}" th:value="${e.code}" th:text="${e.nom}"></option>
+						</select>
+						<button type="submit" class="btn btn-primary">Chercher</button>
+					</form>
+				</div>
+				<table class="table table-striped">
+					<tr>
+						<th>ID</th>
+						<th>Titre</th>
+						<th>Date</th>
+						<th>Montant</th>
+						<th>Type</th>
+					</tr>
+					<tr th:each="t:${taxes}">
+					<td th:text="${t.id}"></td>
+						<td th:text="${t.titre}"></td>
+						<td th:text="${t.dateTaxe}"></td>
+						<td th:text="${t.montant}"></td>
+						<td th:text="${t.class.simpleName}"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

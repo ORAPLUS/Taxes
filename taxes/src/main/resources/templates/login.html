@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Login</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap-theme.min.css"
+	th:href="@{/css/bootstrap-theme.min.css}" />
+</head>
+<body>
+<div class="panel panel-default">
+			<div class="panel-heading">Oraplus</div>
+			<div class="panel-body">
+				<div class="container">
+<div class="alert alert-danger" role="alert" th:if="${param.error}">
+  <strong>Oh snap!</strong> Change a few things up and try submitting again.
+</div>
+<div class="alert alert-success" role="alert" th:if="${param.logout}">
+  <strong>Well done!</strong> You successfully read this important alert message.
+</div>			
+<div class="wrapper">
+    <form class="form-signin" th:action="@{/login}" method="POST">       
+      <h2 class="form-signin-heading">Please login</h2>
+      <input type="text" class="form-control" name="username" placeholder="Username"/>
+      <input type="password" class="form-control" name="password" placeholder="Password"/>      
+      <label class="checkbox">
+        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"/> Remember me
+      </label>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+    </form>
+  </div>
+    </div>
+      </div>
+        </div>
+</body>
+</html>
